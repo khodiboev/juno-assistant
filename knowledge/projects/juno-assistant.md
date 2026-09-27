@@ -15,7 +15,7 @@ Code: https://github.com/khodiboev/juno-assistant
 Juno measured the assistant with his own test sets. Retrieval: switching the embedding model and adding a context header to every chunk raised the share of questions whose correct passage is in the top five results from 81% to 100%. Safety: the similarity threshold was calibrated so that off-topic questions (weather, recipes) are refused. Answers: each answer is checked for required facts and for invented numbers, links or accounts that do not appear in the source passages.
 
 ## Tech stack
-Python, FastAPI, Pydantic, Qdrant, sentence-transformers, Hugging Face Transformers, PyTorch, Docker Compose.
+Backend: Python, FastAPI, Pydantic, Qdrant, sentence-transformers, Hugging Face Transformers, PyTorch, Docker Compose. Frontend: Next.js (App Router), React, TypeScript, with answers streamed word by word.
 
 ## Why these choices
 Everything runs locally and for free on a normal server, with no paid AI API. The trade-off is that a small language model is much weaker than commercial models, so answers are short and are always grounded in Juno's documents.

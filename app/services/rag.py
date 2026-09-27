@@ -87,18 +87,29 @@ def top_sources(points) -> list[Source]:
     return sources
 
 
-def answer_question(question: str) -> Answer:
+def resolve(question: str, previous_question: str | None = None):
+    """Retrieve for the question alone; if nothing is relevant and there is an earlier
+    question, treat this one as a follow-up ("tell me more") and search with both."""
     points = retrieve(question)
+    if points or not previous_question:
+        return question, points
+
+    points = retrieve(f"{previous_question} {question}")
+    return f"Earlier question: {previous_question}\nFollow-up: {question}", points
+
+
+def answer_question(question: str, previous_question: str | None = None) -> Answer:
+    prompt_question, points = resolve(question, previous_question)
     if not points:
         return Answer(answer=NO_ANSWER)
 
     notes = build_notes(points)
-    text = trim_to_last_sentence(generate(build_messages(question, notes)))
+    text = trim_to_last_sentence(generate(build_messages(prompt_question, notes)))
     return Answer(answer=text, sources=top_sources(points), used_context=True, context=notes)
 
 
-def stream_answer(question: str) -> Iterator[dict]:
-    points = retrieve(question)
+def stream_answer(question: str, previous_question: str | None = None) -> Iterator[dict]:
+    prompt_question, points = resolve(question, previous_question)
     if not points:
         yield {"type": "sources", "sources": [], "used_context": False}
         yield {"type": "token", "text": NO_ANSWER}
@@ -108,5 +119,5 @@ def stream_answer(question: str) -> Iterator[dict]:
     yield {"type": "sources", "sources": sources, "used_context": True}
 
     notes = build_notes(points)
-    for piece in stream_generate(build_messages(question, notes)):
+    for piece in stream_generate(build_messages(prompt_question, notes)):
         yield {"type": "token", "text": piece}

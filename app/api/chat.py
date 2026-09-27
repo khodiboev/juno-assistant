@@ -13,7 +13,7 @@ router = APIRouter(tags=["chat"])
 @router.post("/chat", response_model=ChatResponse)
 def chat(body: ChatRequest) -> ChatResponse:
     start = time.perf_counter()
-    result = answer_question(body.question)
+    result = answer_question(body.question, body.previous_question)
     return ChatResponse(
         answer=result.answer,
         sources=[SourceOut(source=s.source, section=s.section, score=s.score) for s in result.sources],
@@ -27,7 +27,7 @@ def chat_stream(body: ChatRequest) -> StreamingResponse:
     def events():
         start = time.perf_counter()
         try:
-            for event in stream_answer(body.question):
+            for event in stream_answer(body.question, body.previous_question):
                 yield json.dumps(event) + "\n"
         except Exception:
             yield json.dumps({"type": "error", "message": "The assistant failed to answer. Please try again."}) + "\n"

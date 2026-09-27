@@ -7,6 +7,7 @@ class ChatRequest(BaseModel):
         max_length=500,
         examples=["What tech stack does Santa use?"],
     )
+    previous_question: str | None = Field(default=None, max_length=500)
 
     @field_validator("question")
     @classmethod
@@ -15,6 +16,13 @@ class ChatRequest(BaseModel):
         if not value:
             raise ValueError("question must not be empty")
         return value
+
+    @field_validator("previous_question")
+    @classmethod
+    def blank_to_none(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        return value.strip() or None
 
 
 class SourceOut(BaseModel):
