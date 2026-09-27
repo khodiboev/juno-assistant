@@ -6,6 +6,16 @@ It answers **only** from my own documents, shows the sources of every answer, an
 
 ## How it works
 
+```
+Question ──► bge-small embedding ──► Qdrant (top 5 chunks) ──► similarity threshold
+                                                                 │
+                                   no relevant chunk ◄───────────┤
+                                   → "I don't have that"         │
+                                                                 ▼
+                            Qwen2.5-1.5B-Instruct writes a short answer
+                            from the chunks, streamed word by word to the UI
+```
+
 1. **Knowledge base** — Markdown files in `knowledge/` (about, skills, education, one file per project), split into chunks by their headings.
 2. **Embeddings** — each chunk gets a context header (person · document · section) and is embedded with `BAAI/bge-small-en-v1.5`, then stored in **Qdrant**.
 3. **Retrieval** — the question is embedded with a query instruction; the five most similar chunks are returned.
@@ -43,15 +53,19 @@ The original plan used TinyLlama; the grounding check showed it invented facts i
 - **Frontend:** Next.js (App Router), React, TypeScript, CSS Modules
 - **Infrastructure:** Docker Compose
 
-## Project structureapp/ FastAPI backend
-api/ /health, /chat, /chat/stream
-services/ chunker, embeddings, vector store, LLM, RAG
-schemas/ request and response models
-knowledge/ the assistant's knowledge base (Markdown)
-scripts/ ingest, search, evaluation and calibration
-eval_results/ saved evaluation runs
-web/ Next.js chat interface
-docker-compose.yml Qdrant
+## Project structure
+
+```
+app/                 FastAPI backend
+  api/               /health, /chat, /chat/stream
+  services/          chunker, embeddings, vector store, LLM, RAG
+  schemas/           request and response models
+knowledge/           the assistant's knowledge base (Markdown)
+scripts/             ingest, search, evaluation and calibration
+eval_results/        saved evaluation runs
+web/                 Next.js chat interface
+docker-compose.yml   Qdrant
+```
 
 ## Run locally
 
@@ -65,14 +79,14 @@ docker compose up -d
 python3.12 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
-python -m scripts.ingest              # chunk, embed and store the knowledge base
-uvicorn app.main:app --reload --reload-dir app   # http://localhost:8000/docs
+python -m scripts.ingest                          # chunk, embed and store the knowledge base
+uvicorn app.main:app --reload --reload-dir app    # http://localhost:8000/docs
 
 # 3. Frontend
 cd web
 cp .env.example .env.local
 npm install
-npm run dev                           # http://localhost:3100
+npm run dev                                       # http://localhost:3100
 ```
 
 Evaluate:
