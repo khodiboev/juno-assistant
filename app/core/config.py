@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     )
 
     app_name: str = "Juno Assistant"
+    cors_origins: list[str] = ["http://localhost:3000"]
 
     qdrant_url: str = "http://localhost:6333"
     qdrant_api_key: str | None = None

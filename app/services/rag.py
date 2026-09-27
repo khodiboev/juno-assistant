@@ -1,9 +1,10 @@
 import re
 from dataclasses import dataclass, field
+from typing import Iterator
 
 from app.core.config import get_settings
 from app.services.embeddings import embed_query
-from app.services.llm import generate
+from app.services.llm import generate, stream_generate
 from app.services.vector_store import search
 
 SYSTEM_PROMPT = (
@@ -71,15 +72,8 @@ def build_messages(question: str, notes: str) -> list[dict]:
     ]
 
 
-def answer_question(question: str) -> Answer:
+def top_sources(points) -> list[Source]:
     settings = get_settings()
-    points = retrieve(question)
-    if not points:
-        return Answer(answer=NO_ANSWER)
-
-    notes = build_notes(points)
-    text = trim_to_last_sentence(generate(build_messages(question, notes)))
-
     sources: list[Source] = []
     seen = set()
     for point in points:
@@ -90,5 +84,29 @@ def answer_question(question: str) -> Answer:
         sources.append(Source(source=key[0], section=key[1], score=round(point.score, 3)))
         if len(sources) == settings.max_sources:
             break
+    return sources
 
-    return Answer(answer=text, sources=sources, used_context=True, context=notes)
+
+def answer_question(question: str) -> Answer:
+    points = retrieve(question)
+    if not points:
+        return Answer(answer=NO_ANSWER)
+
+    notes = build_notes(points)
+    text = trim_to_last_sentence(generate(build_messages(question, notes)))
+    return Answer(answer=text, sources=top_sources(points), used_context=True, context=notes)
+
+
+def stream_answer(question: str) -> Iterator[dict]:
+    points = retrieve(question)
+    if not points:
+        yield {"type": "sources", "sources": [], "used_context": False}
+        yield {"type": "token", "text": NO_ANSWER}
+        return
+
+    sources = [vars(s) for s in top_sources(points)]
+    yield {"type": "sources", "sources": sources, "used_context": True}
+
+    notes = build_notes(points)
+    for piece in stream_generate(build_messages(question, notes)):
+        yield {"type": "token", "text": piece}
