@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
-from qdrant_client import QdrantClient
 
 from app.core.config import Settings, get_settings
+from app.services.vector_store import get_client
 
 router = APIRouter(tags=["health"])
 
@@ -9,8 +9,7 @@ router = APIRouter(tags=["health"])
 @router.get("/health")
 def health(settings: Settings = Depends(get_settings)):
     try:
-        client = QdrantClient(url=settings.qdrant_url, api_key=settings.qdrant_api_key, timeout=3)
-        collections = [c.name for c in client.get_collections().collections]
+        collections = [c.name for c in get_client().get_collections().collections]
         qdrant = {"status": "ok", "collections": collections}
     except Exception as e:
         qdrant = {"status": "error", "detail": str(e)}

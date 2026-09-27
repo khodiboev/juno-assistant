@@ -16,6 +16,14 @@ class Settings(BaseSettings):
     qdrant_api_key: str | None = None
     qdrant_collection: str = "portfolio"
 
+    embedding_model: str = "BAAI/bge-small-en-v1.5"
+    embedding_query_prefix: str = "Represent this sentence for searching relevant passages: "
+
+    knowledge_dir: str = "knowledge"
+    knowledge_subject: str = "Juno (Jurabek Khodiboev)"
+    chunk_size_chars: int = 1200
+    chunk_overlap_chars: int = 200
+
 
 @lru_cache
 def get_settings() -> Settings:
