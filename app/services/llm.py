@@ -1,9 +1,12 @@
+import threading
 from functools import lru_cache
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from app.core.config import get_settings
+
+_generate_lock = threading.Lock()
 
 
 def resolve_device(preference: str) -> str:
@@ -37,7 +40,7 @@ def generate(messages: list[dict]) -> str:
     inputs = tokenizer(prompt, return_tensors="pt").to(device)
 
     do_sample = settings.llm_temperature > 0
-    with torch.no_grad():
+    with _generate_lock, torch.no_grad():
         output = model.generate(
             **inputs,
             max_new_tokens=settings.llm_max_new_tokens,
