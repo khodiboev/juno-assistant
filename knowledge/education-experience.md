@@ -1,11 +1,7 @@
 # Education, Experience and Awards
 
 ## Education
-### Master of Science in Engineering, AI Business — Seoul Media Institute of Technology (SMIT)
-Seoul, South Korea. Degree conferred in August 2026. The program combines artificial intelligence with business applications.
-
-### Bachelor's degree in Mathematics and Informatics — Namangan State University
-Namangan, Uzbekistan, 2018–2022.
+Juno studied at two universities. He earned a Master of Science in Engineering in AI Business at Seoul Media Institute of Technology (SMIT) in Seoul, South Korea; the degree was conferred in August 2026 and the program combines artificial intelligence with business applications. Before that, he earned a Bachelor's degree in Mathematics and Informatics at Namangan State University in Namangan, Uzbekistan (2018–2022).
 
 ## Awards and scholarships
 - Full (100%) tuition scholarship for his master's studies at SMIT, awarded for his volunteer work and his role as president of the Uzbek international students' association.

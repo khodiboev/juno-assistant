@@ -1,0 +1,135 @@
+{
+  "llm_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "summary": {
+    "passed": 9,
+    "total": 11,
+    "fact_coverage": 0.905,
+    "grounded": 11,
+    "off_topic_refused": 2,
+    "avg_latency_s": 0.68
+  },
+  "results": [
+    {
+      "question": "What tech stack does Santa use?",
+      "answer": "Juno uses NestJS for the backend, Next.js for the front-end, and Apollo Client for real-time communication. He also utilizes MUI, SCSS, Framer Motion, and next-i18next for styling and internationalization.",
+      "pass": false,
+      "facts_found": 2,
+      "facts_total": 3,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 1.19
+    },
+    {
+      "question": "Which technologies were used to build ColdBrew?",
+      "answer": "The project uses Node.js, Express, TypeScript, MongoDB with Mongoose, a MVC architecture, JWT for customers and sessions for the admin panel, Redux for global state management, React 18, TypeScript, Redux Toolkit with selectors, React Context, React Router, MUI, Axios, and AWS Lambda for deployment.",
+      "pass": true,
+      "facts_found": 3,
+      "facts_total": 3,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 1.08
+    },
+    {
+      "question": "Where did Juno study?",
+      "answer": "Juno studied at two universities before earning his Master of Science in Engineering in AI Business at Seoul Media Institute of Technology (SMIT).",
+      "pass": false,
+      "facts_found": 1,
+      "facts_total": 2,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 0.58
+    },
+    {
+      "question": "What awards or scholarships has Juno received?",
+      "answer": "Juno has received several prestigious awards and scholarships. He graduated with a Master of Science in Engineering in AI Business at Seoul Media Institute of Technology (SMIT) in August 2026, which included an academic excellence award and an additional cash prize. Additionally, he has been recognized for his leadership roles within the Uzbek international students' association at SMIT, where he represented Uzbek students and organized community activities.",
+      "pass": true,
+      "facts_found": 2,
+      "facts_total": 2,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 1.18
+    },
+    {
+      "question": "What languages does Juno speak?",
+      "answer": "Juno speaks English, Uzbek, Turkish, Korean, and Russian fluently.",
+      "pass": true,
+      "facts_found": 3,
+      "facts_total": 3,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 0.43
+    },
+    {
+      "question": "How can I contact Juno?",
+      "answer": "You can reach Juno by email at fikrchi@gmail.com or by visiting his GitHub profile at https://github.com/khodiboev.",
+      "pass": true,
+      "facts_found": 1,
+      "facts_total": 1,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 0.49
+    },
+    {
+      "question": "Does Juno need visa sponsorship?",
+      "answer": "Juno is already living in Korea and requires sponsorship for an E-7 work visa.",
+      "pass": true,
+      "facts_found": 1,
+      "facts_total": 1,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 0.35
+    },
+    {
+      "question": "How accurate is the food image classifier?",
+      "answer": "The food image classifier is highly accurate, achieving a validation accuracy of 93.7% and a balanced accuracy of 94.8%.",
+      "pass": true,
+      "facts_found": 1,
+      "facts_total": 1,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 0.51
+    },
+    {
+      "question": "What kind of job is Juno looking for?",
+      "answer": "Juno is currently seeking a full-time developer role at a company in Korea, specifically focusing on full-stack, backend, or AI-application development.",
+      "pass": true,
+      "facts_found": 2,
+      "facts_total": 2,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 0.45
+    },
+    {
+      "question": "How does this assistant work?",
+      "answer": "The assistant uses a combination of RAG (Retrieval-Augmented Generation) technology to generate human-like responses to user queries. This involves searching Juno's own documents for relevant information and then using a small open-source language model to synthesize those findings into coherent answers.",
+      "pass": true,
+      "facts_found": 1,
+      "facts_total": 1,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 0.78
+    },
+    {
+      "question": "Was Juno a leader in any organization?",
+      "answer": "Yes, Juno served as president of the Uzbek international students' association at SMIT, representing Uzbek students and organizing community activities.",
+      "pass": true,
+      "facts_found": 2,
+      "facts_total": 2,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 0.44
+    },
+    {
+      "question": "What is the weather in Seoul today?",
+      "answer": "I don't have information about that. I can answer questions about Juno's background, skills, education and projects.",
+      "pass": true,
+      "off_topic": true
+    },
+    {
+      "question": "How do I cook plov?",
+      "answer": "I don't have information about that. I can answer questions about Juno's background, skills, education and projects.",
+      "pass": true,
+      "off_topic": true
+    }
+  ]
+}

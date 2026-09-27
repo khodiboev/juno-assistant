@@ -24,6 +24,15 @@ class Settings(BaseSettings):
     chunk_size_chars: int = 1200
     chunk_overlap_chars: int = 200
 
+    llm_model: str = "Qwen/Qwen2.5-1.5B-Instruct"
+    llm_device: str = "auto"
+    llm_max_new_tokens: int = 200
+    llm_temperature: float = 0.0
+
+    top_k: int = 5
+    min_score: float = 0.58
+    max_sources: int = 3
+
 
 @lru_cache
 def get_settings() -> Settings:

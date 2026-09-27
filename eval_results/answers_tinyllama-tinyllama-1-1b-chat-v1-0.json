@@ -1,0 +1,154 @@
+{
+  "llm_model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "summary": {
+    "passed": 5,
+    "total": 11,
+    "fact_coverage": 0.952,
+    "grounded": 6,
+    "off_topic_refused": 2,
+    "avg_latency_s": 1.81
+  },
+  "results": [
+    {
+      "question": "What tech stack does Santa use?",
+      "answer": "Santa uses the following technologies and frameworks:\n\n1. NestJS monorepo with two apps: vmotors-api (GraphQL API) and vmotors-batch (scheduled background jobs).\n2. Apollo Client for GraphQL queries and mutations.\n3. Apollo reactive variables for global state (instead of Redux).\n4. MUI for UI components.\n5. SCSS for CSS styling.\n6. Framer Motion for animations and transitions.\n7. Next.js 14 (pages router) for server-side rendering.\n8. Apollo Server for server-side queries and mutations.\n9. Next.js 14 (serverless functions) for serverless computing.\n10. Custom domain santacar.tech for hosting the website.\n11. Docker for containerization and deployment.\n12.",
+      "pass": false,
+      "facts_found": 3,
+      "facts_total": 3,
+      "forbidden": [],
+      "invented": [
+        "10",
+        "11",
+        "12",
+        "2",
+        "5",
+        "6",
+        "7",
+        "9"
+      ],
+      "latency_s": 3.6
+    },
+    {
+      "question": "Which technologies were used to build ColdBrew?",
+      "answer": "ColdBrew is a full-stack e-commerce application built using Node.js, Express, TypeScript, MongoDB, and Redux Toolkit. The backend uses a backend-as-a-service (BaaS) platform called AWS Lambda, which provides serverless computing capabilities. The frontend is built using React, TypeScript, Redux, and MUI. The project also includes a backend API for authentication and authorization, as well as a frontend admin panel for managing products and users. Finally, the project utilizes Redux for state management and React Context for global state.",
+      "pass": true,
+      "facts_found": 3,
+      "facts_total": 3,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 2.24
+    },
+    {
+      "question": "Where did Juno study?",
+      "answer": "Juno studied at two universities: Namangan State University in Namangan, Uzbekistan (2018-2022) and Seoul Media Institute of Technology (SMIT) in Seoul, South Korea (2019-2022).",
+      "pass": false,
+      "facts_found": 2,
+      "facts_total": 2,
+      "forbidden": [],
+      "invented": [
+        "2019"
+      ],
+      "latency_s": 1.21
+    },
+    {
+      "question": "What awards or scholarships has Juno received?",
+      "answer": "Yes, Juno has received several awards and scholarships throughout his education and career. Here are some examples:\n\n1. Full (100%) tuition scholarship for his master's studies at SMIT, awarded for his volunteer work and his role as president of the Uzbek international students' association.\n2. Academic Excellence award, received twice, each with an additional cash prize.\n3. Several other university awards.\n\nThese awards demonstrate Juno's dedication to academic excellence and his commitment to serving his community through various volunteer work and leadership positions.",
+      "pass": false,
+      "facts_found": 2,
+      "facts_total": 2,
+      "forbidden": [],
+      "invented": [
+        "3"
+      ],
+      "latency_s": 2.21
+    },
+    {
+      "question": "What languages does Juno speak?",
+      "answer": "Juno speaks English, Turkish, Korean, and Russian. He is fluent in all of these languages, but he primarily uses English for communication with clients and colleagues.",
+      "pass": false,
+      "facts_found": 2,
+      "facts_total": 3,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 0.81
+    },
+    {
+      "question": "How can I contact Juno?",
+      "answer": "To contact Juno directly, you can email him at fikrchi@gmail.com. Alternatively, you can visit his LinkedIn profile and send him a message through the \"Professional Contact\" section. You can also follow him on Twitter (@junokhodiboev) or Instagram (@junokhodiboev).",
+      "pass": false,
+      "facts_found": 1,
+      "facts_total": 1,
+      "forbidden": [],
+      "invented": [
+        "@junokhodiboev",
+        "instagram",
+        "twitter"
+      ],
+      "latency_s": 1.33
+    },
+    {
+      "question": "Does Juno need visa sponsorship?",
+      "answer": "Yes, Juno needs visa sponsorship for an E-7 work visa in order to work in Korea. The E-7 work visa allows him to work in Korea for up to three years, but he will need to obtain a work permit before starting his job. Juno can apply for a work permit through the Korean government's immigration service.",
+      "pass": true,
+      "facts_found": 1,
+      "facts_total": 1,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 1.42
+    },
+    {
+      "question": "How accurate is the food image classifier?",
+      "answer": "The food image classifier developed by Juno Assistant is capable of accurately identifying different types of food items, including hamburgers, hot dogs, desserts, and kebabs. The accuracy rate for this classifier ranges between 93.7% and 96.7%, depending on the dataset used and the specific configuration of the model. However, the exact accuracy may vary depending on the specific use case and the quality of the input data.",
+      "pass": false,
+      "facts_found": 1,
+      "facts_total": 1,
+      "forbidden": [],
+      "invented": [
+        "96.7"
+      ],
+      "latency_s": 1.82
+    },
+    {
+      "question": "What kind of job is Juno looking for?",
+      "answer": "Juno is looking for a full-time developer role at a company in Korea, specifically a company that specializes in developing AI-based products or services. The specific job title may vary depending on the company, but Juno is looking for a role that involves full-stack development, backend development, or AI application development.",
+      "pass": true,
+      "facts_found": 2,
+      "facts_total": 2,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 1.26
+    },
+    {
+      "question": "How does this assistant work?",
+      "answer": "The assistant, named Juno, uses retrieval-augmented generation (RAG) to generate responses to user queries. RAG is a technique where the assistant searches through its own documents for relevant information and then generates a response based on those findings. Here's how it works:\n\n1. Juno's documents (about, skills, experience, and one file per project) are split into chunks by their headings.\n\n2. Each chunk is turned into a vector (an embedding) with the BAAI/bge-small-en-v1.5 model and stored in the Qdrant vector database.\n\n3. When a question arrives, it is embedded the same way and Qdrant returns the five most similar chunks.\n\n4. Chunks below a calibrated similarity threshold are dropped. If nothing relevant remains, the assistant says it does not know instead of guessing.\n\n5.",
+      "pass": true,
+      "facts_found": 1,
+      "facts_total": 1,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 3.23
+    },
+    {
+      "question": "Was Juno a leader in any organization?",
+      "answer": "Yes, Juno was the president of the Uzbek international students' association at SMIT, representing Uzbek students and organizing community activities.",
+      "pass": true,
+      "facts_found": 2,
+      "facts_total": 2,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 0.74
+    },
+    {
+      "question": "What is the weather in Seoul today?",
+      "answer": "I don't have information about that. I can answer questions about Juno's background, skills, education and projects.",
+      "pass": true,
+      "off_topic": true
+    },
+    {
+      "question": "How do I cook plov?",
+      "answer": "I don't have information about that. I can answer questions about Juno's background, skills, education and projects.",
+      "pass": true,
+      "off_topic": true
+    }
+  ]
+}
