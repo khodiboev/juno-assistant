@@ -1,0 +1,17 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Secrets
+.env
+
+# Models, vector DB data, caches
+models/
+qdrant_storage/
+*.safetensors
+*.bin
+
+# OS / editor
+.DS_Store
+.vscode/
