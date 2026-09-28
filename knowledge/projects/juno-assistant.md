@@ -3,6 +3,7 @@
 ## Summary
 Juno Assistant is the chatbot you are talking to. It answers questions about Juno's background, skills and projects using retrieval-augmented generation (RAG): it searches Juno's own documents for the most relevant passages and a small open-source language model writes the answer from them, citing its sources.
 Code: https://github.com/khodiboev/juno-assistant
+Live: https://ask.santacar.tech
 
 ## How it works
 1. Juno's documents (about, skills, experience and one file per project) are split into chunks by their headings.

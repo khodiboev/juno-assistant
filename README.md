@@ -1,5 +1,7 @@
 # Juno Assistant
 
+**Live demo: [ask.santacar.tech](https://ask.santacar.tech)**
+
 An AI assistant that answers recruiters' questions about my background, skills and projects — built with retrieval-augmented generation (RAG) and a small open-source language model that runs locally, with no paid AI API.
 
 It answers **only** from my own documents, shows the sources of every answer, and declines questions it has no information about.

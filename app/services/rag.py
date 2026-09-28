@@ -87,15 +87,33 @@ def top_sources(points) -> list[Source]:
     return sources
 
 
+# Words that point back to the previous question ("tell me more about that project")
+FOLLOW_UP_HINT = re.compile(
+    r"\b(that|it|its|those|them|more|details?|elaborate|else)\b|\bthis (project|one)\b",
+    re.IGNORECASE,
+)
+
+
+def is_follow_up(question: str) -> bool:
+    return bool(FOLLOW_UP_HINT.search(question)) or len(question.split()) <= 3
+
+
 def resolve(question: str, previous_question: str | None = None):
-    """Retrieve for the question alone; if nothing is relevant and there is an earlier
-    question, treat this one as a follow-up ("tell me more") and search with both."""
+    """Decide what to search for. A follow-up ("in detail", "tell me more about that")
+    is searched together with the previous question; anything else on its own."""
+    follow_up_prompt = f"Earlier question: {previous_question}\nFollow-up: {question}"
+
+    if previous_question and is_follow_up(question):
+        points = retrieve(f"{previous_question} {question}")
+        if points:
+            return follow_up_prompt, points
+
     points = retrieve(question)
     if points or not previous_question:
         return question, points
 
     points = retrieve(f"{previous_question} {question}")
-    return f"Earlier question: {previous_question}\nFollow-up: {question}", points
+    return follow_up_prompt, points
 
 
 def answer_question(question: str, previous_question: str | None = None) -> Answer:
