@@ -5,7 +5,7 @@ from pathlib import Path
 
 from app.core.config import get_settings
 from app.services.embeddings import get_embedder
-from app.services.llm import get_llm
+from app.services.llm import get_llm, model_label
 from app.services.rag import answer_question
 
 # (question, required facts) — each fact is a list of accepted spellings
@@ -53,7 +53,7 @@ def unsupported(answer: str, context: str) -> list[str]:
 
 def main() -> None:
     settings = get_settings()
-    print(f"LLM: {settings.llm_model}")
+    print(f"LLM: {model_label()}")
 
     start = time.time()
     get_embedder()
@@ -106,10 +106,10 @@ def main() -> None:
 
     out_dir = Path("eval_results")
     out_dir.mkdir(exist_ok=True)
-    slug = re.sub(r"[^a-zA-Z0-9]+", "-", settings.llm_model).strip("-").lower()
+    slug = re.sub(r"[^a-zA-Z0-9]+", "-", model_label()).strip("-").lower()
     out_file = out_dir / f"answers_{slug}.json"
     out_file.write_text(json.dumps({
-        "llm_model": settings.llm_model,
+        "llm_model": model_label(),
         "summary": {
             "passed": passed, "total": n,
             "fact_coverage": round(facts_found / facts_total, 3),

@@ -1,0 +1,135 @@
+{
+  "llm_model": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+  "summary": {
+    "passed": 10,
+    "total": 11,
+    "fact_coverage": 0.952,
+    "grounded": 11,
+    "off_topic_refused": 2,
+    "avg_latency_s": 2.16
+  },
+  "results": [
+    {
+      "question": "What tech stack does Santa use?",
+      "answer": "The Santa project uses NestJS monorepo with two apps — vmotors-api (the GraphQL API) and vmotors-batch (scheduled background jobs), MongoDB with Mongoose, Next.js 14 for the frontend, Apollo Client, Apollo reactive variables for global state instead of Redux, Material-UI (MUI), SCSS, Framer Motion, next-i18next (English and Korean).",
+      "pass": true,
+      "facts_found": 3,
+      "facts_total": 3,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 4.04
+    },
+    {
+      "question": "Which technologies were used to build ColdBrew?",
+      "answer": "ColdBrew was built using Node.js, Express, TypeScript, MongoDB with Mongoose, MVC architecture for the backend, EJS for server-side rendering of the admin panel, JWT for customer authentication and sessions for admin panel authentication, React 18 with Redux Toolkit for the frontend, and React Context and React Router for state management.",
+      "pass": true,
+      "facts_found": 3,
+      "facts_total": 3,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 2.56
+    },
+    {
+      "question": "Where did Juno study?",
+      "answer": "Juno studied at two universities. He earned a Master of Science in Engineering in AI Business from Seoul Media Institute of Technology (SMIT) in Seoul, South Korea; the degree was conferred in August 2026 and the program combines artificial intelligence with business applications. Before that, he earned a Bachelor's degree in Mathematics and Informatics at Namangan State University in Namangan, Uzbekistan (2018–2022).",
+      "pass": true,
+      "facts_found": 2,
+      "facts_total": 2,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 2.96
+    },
+    {
+      "question": "What awards or scholarships has Juno received?",
+      "answer": "Juno has received several awards and scholarships. He was awarded a full (100%) tuition scholarship for his master's studies at SMIT, which he used to study AI Business. He also received academic excellence awards twice, each with an additional cash prize.",
+      "pass": true,
+      "facts_found": 2,
+      "facts_total": 2,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 2.16
+    },
+    {
+      "question": "What languages does Juno speak?",
+      "answer": "Juno speaks English, Uzbek, Turkish, and Korean.",
+      "pass": true,
+      "facts_found": 3,
+      "facts_total": 3,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 1.47
+    },
+    {
+      "question": "How can I contact Juno?",
+      "answer": "You can contact Juno at fikrchi@gmail.com.",
+      "pass": true,
+      "facts_found": 1,
+      "facts_total": 1,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 1.31
+    },
+    {
+      "question": "Does Juno need visa sponsorship?",
+      "answer": "Juno needs sponsorship for an E-7 work visa to live and work in Korea.",
+      "pass": true,
+      "facts_found": 1,
+      "facts_total": 1,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 1.26
+    },
+    {
+      "question": "How accurate is the food image classifier?",
+      "answer": "The food image classifier has a validation accuracy of 93.7% and balanced accuracy (average recall per class) of 94.8%.",
+      "pass": true,
+      "facts_found": 1,
+      "facts_total": 1,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 1.79
+    },
+    {
+      "question": "What kind of job is Juno looking for?",
+      "answer": "Juno is looking for a full-time developer role at a company in Korea, specifically for backend or AI-application development. He enjoys work where web development and AI meet.",
+      "pass": false,
+      "facts_found": 1,
+      "facts_total": 2,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 1.62
+    },
+    {
+      "question": "How does this assistant work?",
+      "answer": "Juno's assistant works by first splitting his documents into chunks based on their headings. Each chunk is then converted to a vector using the BAAI/bge-small-en-v1.5 model and stored in the Qdrant vector database. When a question arrives, it is embedded similarly and Qdrant returns the five most similar chunks. Chunks below a calibrated similarity threshold are dropped if nothing relevant remains, or Juno says he doesn't know instead of guessing. A small language model that runs locally writes a short answer using only the remaining chunks.",
+      "pass": true,
+      "facts_found": 1,
+      "facts_total": 1,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 3.38
+    },
+    {
+      "question": "Was Juno a leader in any organization?",
+      "answer": "Yes, Juno served as president of the Uzbek international students' association at SMIT.",
+      "pass": true,
+      "facts_found": 2,
+      "facts_total": 2,
+      "forbidden": [],
+      "invented": [],
+      "latency_s": 1.19
+    },
+    {
+      "question": "What is the weather in Seoul today?",
+      "answer": "I don't have information about that. I can answer questions about Juno's background, skills, education and projects.",
+      "pass": true,
+      "off_topic": true
+    },
+    {
+      "question": "How do I cook plov?",
+      "answer": "I don't have information about that. I can answer questions about Juno's background, skills, education and projects.",
+      "pass": true,
+      "off_topic": true
+    }
+  ]
+}

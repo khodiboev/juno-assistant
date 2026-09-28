@@ -25,8 +25,15 @@ class Settings(BaseSettings):
     chunk_size_chars: int = 1200
     chunk_overlap_chars: int = 200
 
+    # "transformers" (GPU / Apple MPS, for development) or "llama_cpp" (quantized GGUF on CPU, for the server)
+    llm_backend: str = "transformers"
     llm_model: str = "Qwen/Qwen2.5-1.5B-Instruct"
     llm_device: str = "auto"
+    llm_gguf_repo: str = "Qwen/Qwen2.5-1.5B-Instruct-GGUF"
+    llm_gguf_file: str = "qwen2.5-1.5b-instruct-q4_k_m.gguf"
+    llm_context: int = 4096
+    llm_threads: int | None = None
+    llm_gpu_layers: int = 0
     llm_max_new_tokens: int = 200
     llm_temperature: float = 0.0
 
